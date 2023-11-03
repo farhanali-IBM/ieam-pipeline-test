@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Offers</title>
+    <style>
+        :root {
+            --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: var(--font-family-sans-serif);
+            margin: 0;
+        }
+
+        header {
+            background-color: #ffffff;
+            color: #0051a1;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img.logo {
+            height: 40px;
+        }
+
+        nav {
+            background-color: #0051a1;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        li {
+            margin-right: 10px;
+        }
+
+        li:last-child {
+            margin-right: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        a:hover {
+            background-color: #ffffff;
+            color: #0051a1;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        footer {
+            background-color: #009fe3;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .main-image {
+            min-height: 650px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .offers {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .offer {
+            flex: 1;
+            margin-right: 10px;
+            padding: 10px;
+            background-color: #009fe3;
+            color: #000000;
+            border-radius: 5px;
+        cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .offer:hover {
+            background-color: #0088c7;
+            color: #ffffff;
+        }
+
+        .offer h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .offer p {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Specials</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="offers">
+            <div class="offer">
+                <h3>Weekly Specials</h3>
+                <p>Check out our weekly specials and save big on your favorite products.</p>
+            </div>
+            <div class="offer">
+                <h3>Online Coupons</h3>
+                <p>Clip digital coupons online and redeem them at checkout for extra savings.</p>
+            </div>
+        </div>
+
+        <h2>Welcome to Our Store</h2>
+        <p>Discover fresh groceries and exceptional quality. Explore our wide range of products at great prices.</p>
+
+        <div style="display: flex; justify-content: space-between;">
+            <div style="flex: 1; margin-right: 10px;">
+                <img src="https://stylespygirlhome.files.wordpress.com/2019/03/d411e-albertsons-stylespygirl-ammophotog-4.jpg" alt="Fresh Produce" class="main-image">
+                <h3>Fresh Produce</h3>
+                <p>Explore a wide selection of fresh fruits and vegetables sourced from local farms.</p>
+            </div>
+            <div style="flex: 1; margin-left: 10px;">
+                <img src="https://assets.epicurious.com/photos/611137f4ae1741cb107078b4/16:9/w_2560%2Cc_limit/Baker'sPercentages_HERO_072921_19667.jpg" alt="Bakery Items" class="main-image">
+                <h3>Bakery Items</h3>
+                <p>Indulge in our freshly baked bread, pastries, and desserts made with the finest ingredients.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2023 All rights reserved.
+    </footer>
+
+</body>
+</html>

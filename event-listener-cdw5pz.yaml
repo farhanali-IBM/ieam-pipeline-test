@@ -1,0 +1,74 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  creationTimestamp: "2023-11-01T18:21:24Z"
+  generation: 3
+  managedFields:
+  - apiVersion: triggers.tekton.dev/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:address:
+          .: {}
+          f:url: {}
+        f:conditions: {}
+        f:configuration:
+          .: {}
+          f:generatedName: {}
+    manager: openshift-pipelines-triggers-controller
+    operation: Update
+    subresource: status
+    time: "2023-11-01T18:21:26Z"
+  - apiVersion: triggers.tekton.dev/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        .: {}
+        f:serviceAccountName: {}
+        f:triggers: {}
+    manager: Mozilla
+    operation: Update
+    time: "2023-11-02T15:10:06Z"
+  name: event-listener-cdw5pz
+  namespace: pipelines
+  resourceVersion: "26936685"
+  uid: 1a188ed7-efa4-4458-8d6c-00f6b3f27fe5
+spec:
+  namespaceSelector: {}
+  resources: {}
+  serviceAccountName: pipeline
+  triggers:
+  - bindings:
+    - kind: ClusterTriggerBinding
+      ref: github-release
+    template:
+      ref: trigger-template-ieam-edge-pipeline-4mgx8a
+status:
+  address:
+    url: http://el-event-listener-cdw5pz.pipelines.svc.cluster.local:8080
+  conditions:
+  - lastTransitionTime: "2023-11-01T18:21:26Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2023-11-01T18:21:26Z"
+    message: Deployment exists
+    status: "True"
+    type: Deployment
+  - lastTransitionTime: "2023-11-01T18:21:26Z"
+    message: ReplicaSet "el-event-listener-cdw5pz-6dc7d6bc6b" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2023-11-01T18:21:26Z"
+    message: EventListener is ready
+    status: "True"
+    type: Ready
+  - lastTransitionTime: "2023-11-01T18:21:26Z"
+    message: Service exists
+    status: "True"
+    type: Service
+  configuration:
+    generatedName: el-event-listener-cdw5pz
