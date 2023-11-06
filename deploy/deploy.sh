@@ -6,7 +6,7 @@ DEPLOY_DIR="/ocp-tools/ieam-edge-cluster-demo/deploy"
 APP_IMAGE_BASE=$1
 IMAGE_VERSION=$2
 APP_IMAGE=$APP_IMAGE_BASE:$IMAGE_VERSION
-OPERATOR_IMAGE_BASE="docker.io/appimage/ieam-edge-operator"
+OPERATOR_IMAGE_BASE="farhanali89/ieam-dockerhub/operator"
 OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
 
 cd $DEPLOY_DIR && git stash && git pull
