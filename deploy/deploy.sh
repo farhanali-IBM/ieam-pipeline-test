@@ -10,7 +10,7 @@ OPERATOR_IMAGE_BASE="docker.io/appimage/ieam-edge-operator"
 OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
 
 cd $DEPLOY_DIR && git stash && git pull
-cd config/manager && kubectl kustomize edit set image controller="$OPERATOR_IMAGE" && cd ../..
+cd config/manager && kubectl kustomize /ocp-tools/ieam-edge-cluster-demo/deploy/config/manager/kustomization.yaml edit set image controller="$OPERATOR_IMAGE" && cd ../..
 sed -i -e "s|{{APP_IMAGE_BASE}}|$APP_IMAGE_BASE|" config/samples/demo.yaml
 sed -i -e "s|{{IMAGE_VERSION}}|$IMAGE_VERSION|" config/samples/demo.yaml
 
