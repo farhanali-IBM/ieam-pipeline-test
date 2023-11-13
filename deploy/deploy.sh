@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEPLOY_DIR="/ocp-tools/ieam-edge-cluster-demo/deploy"
+DEPLOY_DIR="/home/nginx-app/ieam-edge-cluster-demo/deploy"
 . ~/env.sh
 
 APP_IMAGE_BASE=$1
