@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEPLOY_DIR="/home/nginx-app/ieam-edge-cluster-demo/deploy"
+DEPLOY_DIR="/home/ieam-1/nginx-app/ieam-edge-cluster-demo/deploy"
 . ~/env.sh
 
 APP_IMAGE_BASE=$1
