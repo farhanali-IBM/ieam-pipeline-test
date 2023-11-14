@@ -14,7 +14,7 @@ spec:
   image:
     pullPolicy: Always
     repository: farhanali89/nginx
-    tag: latest
+    tag: $(params.IMAGE_VERSION)
   imagePullPolicy: Always
   imagePullSecrets: []
   nameOverride: ""
