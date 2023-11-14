@@ -6,7 +6,7 @@ DEPLOY_DIR="/home/ieam-1/nginx-app/ieam-pipeline-test/deploy"
 APP_IMAGE_BASE=$1
 IMAGE_VERSION=$2
 APP_IMAGE=$APP_IMAGE_BASE:$IMAGE_VERSION
-OPERATOR_IMAGE_BASE="farhanali89/ieam-dockerhub/operator"
+OPERATOR_IMAGE_BASE="farhanali89/ieam-dockerhub"
 OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
 
 cd $DEPLOY_DIR && git stash && git pull
