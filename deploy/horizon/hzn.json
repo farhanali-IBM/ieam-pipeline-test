@@ -3,6 +3,6 @@
   "MetadataVars": {
     "DOCKER_IMAGE_BASE": "na.artifactory.swg-devops.com/igm-ibm-gsc-team-docker-local/farhanimages/ieam/walgreens:nginx",
     "SERVICE_NAME": "walgreens-application",
-    "SERVICE_VERSION": "1.0.4"
+    "SERVICE_VERSION": "1.0.5"
   }
 }
