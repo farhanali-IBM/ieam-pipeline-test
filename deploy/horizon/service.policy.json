@@ -18,5 +18,5 @@
       "value": "store-cluster"
     }
   ],
-  "constraints": ["app == walgreen"]
+  "constraints": ["app == walgreens"]
 }
