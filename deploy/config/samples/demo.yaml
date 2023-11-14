@@ -13,7 +13,7 @@ spec:
   fullnameOverride: ""
   image:
     pullPolicy: Always
-    repository: farhanali89/ieam-dockerhub
+    repository: farhanali89/nginx
     tag: w24
   imagePullPolicy: Always
   imagePullSecrets: []
