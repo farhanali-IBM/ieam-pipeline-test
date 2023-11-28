@@ -1,8 +1,8 @@
 {
   "HZN_ORG_ID": "ieam-org",
   "MetadataVars": {
-    "DOCKER_IMAGE_BASE": "na.artifactory.swg-devops.com/igm-ibm-gsc-team-docker-local/farhanimages/ieam/walgreens:nginx",
+    "DOCKER_IMAGE_BASE": "farhanali89/nginx",
     "SERVICE_NAME": "walgreens-application",
-    "SERVICE_VERSION": "1.0.22"
+    "SERVICE_VERSION": "1.0.23"
   }
 }
