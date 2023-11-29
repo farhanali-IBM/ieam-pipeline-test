@@ -8,8 +8,10 @@ IMAGE_VERSION=$2
 APP_IMAGE=$APP_IMAGE_BASE:$IMAGE_VERSION
 OPERATOR_IMAGE_BASE="farhanali89/operator"
 OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
+# USER - Update these three variables below
 OPERATOR_BRANCH="main"
 POLICY_CONSTRAINTS="state == $OPERATOR_BRANCH"
+HZN_POLICY_NAME="ieam-org/policy-nginx-operator"
 
 cd $DEPLOY_DIR && git stash && git pull origin $OPERATOR_BRANCH
 cd config/manager && kustomize edit set image controller="$OPERATOR_IMAGE" && cd ../..
