@@ -9,6 +9,7 @@ APP_IMAGE=$APP_IMAGE_BASE:$IMAGE_VERSION
 OPERATOR_IMAGE_BASE="farhanali89/operator"
 OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
 OPERATOR_BRANCH="oklahoma"
+POLICY_CONSTRAINTS="state == $OPERATOR_BRANCH"
 
 cd $DEPLOY_DIR && git stash && git pull origin $OPERATOR_BRANCH
 cd config/manager && kustomize edit set image controller="$OPERATOR_IMAGE" && cd ../..
@@ -18,6 +19,15 @@ sed -i -e "s|{{IMAGE_VERSION}}|$IMAGE_VERSION|" config/samples/demo.yaml
 # Update Version in horizon/hzn.json if you make ANY change
 mv horizon/hzn.json /tmp/hzn.json
 jq --arg IMAGE_VERSION "$IMAGE_VERSION" '.MetadataVars.SERVICE_VERSION |= $IMAGE_VERSION' /tmp/hzn.json > horizon/hzn.json
+
+# Update service.policy.json
+mv ./horizon/service.policy.json /tmp/service.policy.json
+jq --arg Policy_constraints "$POLICY_CONSTRAINTS" '.constraints[0] |= $Policy_constraints' /tmp/service.policy.json > horizon/service.policy.json
+
+echo "\nexport IMAGE_VERSION=$(IMAGE_VERSION)\n" >> ~/env.sh
+echo "running make source..."
+make source
+
 
 make docker-build docker-push IMG=$OPERATOR_IMAGE
 

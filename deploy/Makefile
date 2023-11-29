@@ -49,6 +49,26 @@ endif
 # Image URL to use all building/pushing image targets
 IMG ?= $(IMAGE_TAG_BASE):v$(VERSION)
 
+
+
+
+
+
+#vim . (edit .env file)
+source:
+	. ~/.env && \
+	envsubst < /home/ieam-1/nginx-app/ieam-pipeline-test/deploy/config/samples/template/demo-template.yaml > /home/ieam-1/nginx-app/ieam-pipeline-test/deploy/config/samples/demo.yaml 
+
+
+
+
+
+
+
+
+
+
+
 .PHONY: all
 all: docker-build
 
