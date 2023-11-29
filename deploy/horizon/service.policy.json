@@ -18,5 +18,7 @@
       "value": "store-cluster"
     }
   ],
-  "constraints": ["state == oklahoma"]
+  "constraints": [
+    "state == main"
+  ]
 }
