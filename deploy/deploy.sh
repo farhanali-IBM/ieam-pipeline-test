@@ -17,6 +17,10 @@ cd config/manager && kustomize edit set image controller="$OPERATOR_IMAGE" && cd
 sed -i -e "s|{{APP_IMAGE_BASE}}|$APP_IMAGE_BASE|" config/samples/demo.yaml
 sed -i -e "s|{{IMAGE_VERSION}}|$IMAGE_VERSION|" config/samples/demo.yaml
 
+
+#update node properties
+kubectl exec -it agent-78ffd9bb85-cdmf6 -- curl -X POST -H "Content-Type: application/json" -d '{"properties": [ {"name": "state", "value":"oklahoma"} ]}' http://localhost:8510/node/policy
+
 # Update Version in horizon/hzn.json if you make ANY change
 mv horizon/hzn.json /tmp/hzn.json
 jq --arg IMAGE_VERSION "$IMAGE_VERSION" '.MetadataVars.SERVICE_VERSION |= $IMAGE_VERSION' /tmp/hzn.json > horizon/hzn.json
