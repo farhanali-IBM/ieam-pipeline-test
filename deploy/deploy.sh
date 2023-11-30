@@ -8,14 +8,25 @@ IMAGE_VERSION=$2
 APP_IMAGE=$APP_IMAGE_BASE:$IMAGE_VERSION
 OPERATOR_IMAGE_BASE="farhanali89/operator"
 OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
-OPERATOR_BRANCH="main"
+OPERATOR_BRANCH="oklahoma"
 POLICY_CONSTRAINTS="state == $OPERATOR_BRANCH"
-HZN_POLICY_NAME="ieam-org/policy-nginx-operator"
+HZN_POLICY_NAME="ieam-org/policy-$OPERATOR_BRANCH-nginx-operator"
+
+echo "print all variables to screen....." 
+echo "Image version = $IMAGE_VERSION"
+echo "Horizon Deployment Policy Name = $HZN_POLICY_NAME"
+echo "Branch = $OPERATOR_BRANCH"
+
+
 
 cd $DEPLOY_DIR && git stash && git pull origin $OPERATOR_BRANCH
 cd config/manager && kustomize edit set image controller="$OPERATOR_IMAGE" && cd ../..
 sed -i -e "s|{{APP_IMAGE_BASE}}|$APP_IMAGE_BASE|" config/samples/demo.yaml
 sed -i -e "s|{{IMAGE_VERSION}}|$IMAGE_VERSION|" config/samples/demo.yaml
+
+
+#update node properties
+kubectl exec -it agent-78ffd9bb85-cdmf6 -- curl -X POST -H "Content-Type: application/json" -d '{"properties": [ {"name": "state", "value": "oklahoma" } ]}' http://localhost:8510/node/policy
 
 # Update Version in horizon/hzn.json if you make ANY change
 mv horizon/hzn.json /tmp/hzn.json
