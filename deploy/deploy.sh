@@ -8,7 +8,7 @@ IMAGE_VERSION=$2
 APP_IMAGE=$APP_IMAGE_BASE:$IMAGE_VERSION
 OPERATOR_IMAGE_BASE="farhanali89/operator"
 OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
-OPERATOR_BRANCH="oklahoma"
+OPERATOR_BRANCH="texas"
 POLICY_CONSTRAINTS="state == $OPERATOR_BRANCH"
 HZN_POLICY_NAME="ieam-org/policy-$OPERATOR_BRANCH-nginx-operator"
 
@@ -19,7 +19,7 @@ sed -i -e "s|{{IMAGE_VERSION}}|$IMAGE_VERSION|" config/samples/demo.yaml
 
 
 #update node properties
-kubectl exec -it agent-78ffd9bb85-cdmf6 -- curl -X POST -H "Content-Type: application/json" -d '{"properties": [ {"name": "state", "value": "oklahoma" } ]}' http://localhost:8510/node/policy
+kubectl exec -it agent-78ffd9bb85-cdmf6 -- curl -X POST -H "Content-Type: application/json" -d '{"properties": [ {"name": "state", "value": "texas" } ]}' http://localhost:8510/node/policy
 
 # Update Version in horizon/hzn.json if you make ANY change
 mv horizon/hzn.json /tmp/hzn.json
