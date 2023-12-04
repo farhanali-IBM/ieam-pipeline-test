@@ -8,7 +8,11 @@ IMAGE_VERSION=$2
 APP_IMAGE=$APP_IMAGE_BASE:$IMAGE_VERSION
 OPERATOR_IMAGE_BASE="farhanali89/operator"
 OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
+<<<<<<< HEAD
 OPERATOR_BRANCH="oklahoma"
+=======
+OPERATOR_BRANCH="arizona"
+>>>>>>> 7af957727925d6dee454a74ff4b73204fb73f210
 POLICY_CONSTRAINTS="state == $OPERATOR_BRANCH"
 HZN_POLICY_NAME="ieam-org/policy-$OPERATOR_BRANCH-nginx-operator"
 
@@ -37,7 +41,7 @@ mv ./horizon/service.policy.json /tmp/service.policy.json
 jq --arg Policy_constraints "$POLICY_CONSTRAINTS" '.constraints[0] |= $Policy_constraints' /tmp/service.policy.json > horizon/service.policy.json
 
 #add image version variable to env.sh and update deploy.yaml template
-echo "export IMAGE_VERSION=$IMAGE_VERSION\n" >> ~/env.sh
+echo "CLIENT ENGINEERING DEBUG NOTES: export IMAGE_VERSION=$IMAGE_VERSION\n" >> ~/env.sh
 echo "running make source..."
 make source
 
