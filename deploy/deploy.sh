@@ -2,7 +2,7 @@
 
 DEPLOY_DIR="/home/ieam-1/nginx-app/ieam-pipeline-test/deploy"
 . ~/env.sh
-
+#
 APP_IMAGE_BASE=$1
 IMAGE_VERSION=$2
 APP_IMAGE=$APP_IMAGE_BASE:$IMAGE_VERSION
