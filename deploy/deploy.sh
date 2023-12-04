@@ -38,7 +38,8 @@ mv ./horizon/service.policy.json /tmp/service.policy.json
 jq --arg Policy_constraints "$POLICY_CONSTRAINTS" '.constraints[0] |= $Policy_constraints' /tmp/service.policy.json > horizon/service.policy.json
 
 #add image version variable to env.sh and update deploy.yaml template
-echo "CLIENT ENGINEERING DEBUG NOTES: export IMAGE_VERSION=$IMAGE_VERSION\n" >> ~/env.sh
+echo "CLIENT ENGINEERING DEBUG NOTES:"
+echo" export IMAGE_VERSION=$IMAGE_VERSION\n" >> ~/env.sh
 echo "running make source..."
 make source
 
