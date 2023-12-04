@@ -39,7 +39,7 @@ jq --arg Policy_constraints "$POLICY_CONSTRAINTS" '.constraints[0] |= $Policy_co
 
 #add image version variable to env.sh and update deploy.yaml template
 echo "CLIENT ENGINEERING DEBUG NOTES:"
-echo" export IMAGE_VERSION=$IMAGE_VERSION\n" >> ~/env.sh
+echo "export IMAGE_VERSION=$IMAGE_VERSION\n" >> ~/env.sh
 echo "running make source..."
 make source
 
