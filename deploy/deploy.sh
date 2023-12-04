@@ -13,7 +13,7 @@ OPERATOR_BRANCH="arizona"
 POLICY_CONSTRAINTS="state == $OPERATOR_BRANCH"
 HZN_POLICY_NAME="ieam-org/policy-$OPERATOR_BRANCH-nginx-operator"
 
-echo "print all variables to screen....." 
+echo "DEBUG: print all variables to screen....." 
 echo "Image version = $IMAGE_VERSION"
 echo "Horizon Deployment Policy Name = $HZN_POLICY_NAME"
 echo "Branch = $OPERATOR_BRANCH"
