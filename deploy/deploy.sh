@@ -20,7 +20,7 @@ echo "Branch = $OPERATOR_BRANCH"
 
 
 
-cd $DEPLOY_DIR && git stash && git checkout $OPERATOR_BRANCH && git pull origin $OPERATOR_BRANCH
+cd $DEPLOY_DIR && git checkout $OPERATOR_BRANCH && git pull origin $OPERATOR_BRANCH
 cd config/manager && kustomize edit set image controller="$OPERATOR_IMAGE" && cd ../..
 sed -i -e "s|{{APP_IMAGE_BASE}}|$APP_IMAGE_BASE|" config/samples/demo.yaml
 sed -i -e "s|{{IMAGE_VERSION}}|$IMAGE_VERSION|" config/samples/demo.yaml
