@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEPLOY_DIR="/home/ieam-1/nginx-app/ieam-pipeline-test/deploy"
+DEPLOY_DIR="/home/ieam-1/nginx-app/texas/ieam-pipeline-test/deploy"
 . ~/env.sh
 
 APP_IMAGE_BASE=$1
@@ -26,7 +26,7 @@ mv ./horizon/service.policy.json /tmp/service.policy.json
 jq --arg Policy_constraints "$POLICY_CONSTRAINTS" '.constraints[0] |= $Policy_constraints' /tmp/service.policy.json > horizon/service.policy.json
 
 #add image version variable to env.sh and update deploy.yaml template
-echo "CLIENT ENGINEERING DEBUG NOTES: export IMAGE_VERSION=$IMAGE_VERSION\n" >> ~/env.sh
+echo "export IMAGE_VERSION=$IMAGE_VERSION\n" >> ~/env.sh
 echo "running make source..."
 make source
 
@@ -50,3 +50,4 @@ sleep 10
 hzn exchange deployment addpolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
 # hzn exchange deployment updatepolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
 
+git add --all && git commit -m "updating repo" && git push -u origin $OPERATOR_BRANCH
