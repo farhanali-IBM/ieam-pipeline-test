@@ -10,7 +10,7 @@ OPERATOR_IMAGE_BASE="farhanali89/operator"
 OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
 OPERATOR_BRANCH="texas"
 POLICY_CONSTRAINTS="state == $OPERATOR_BRANCH"
-HZN_POLICY_NAME="ieam-org/policy-nginx-operator"
+HZN_POLICY_NAME="ieam-org/policy-$OPERATOR_BRANCH-nginx-operator"
 
 cd $DEPLOY_DIR && git stash && git pull origin $OPERATOR_BRANCH
 cd config/manager && kustomize edit set image controller="$OPERATOR_IMAGE" && cd ../..
