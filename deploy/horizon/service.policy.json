@@ -19,6 +19,6 @@
     }
   ],
   "constraints": [
-    "state == main"
+    "state == cluster2"
   ]
 }
