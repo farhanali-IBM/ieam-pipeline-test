@@ -61,5 +61,5 @@ sleep 10
 #deploy new deployment policy
 hzn exchange deployment addpolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
 # hzn exchange deployment updatepolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
-
+git add --all && git commit -m "updating repo" && git push -u origin $OPERATOR_BRANCH
 oc logout
