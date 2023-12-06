@@ -24,6 +24,7 @@ cd config/manager && kustomize edit set image controller="$OPERATOR_IMAGE" && cd
 sed -i -e "s|{{APP_IMAGE_BASE}}|$APP_IMAGE_BASE|" config/samples/demo.yaml
 sed -i -e "s|{{IMAGE_VERSION}}|$IMAGE_VERSION|" config/samples/demo.yaml
 
+oc login --token=sha256~wdDTAqzETGbUOUkFZEzIPZImtmUokXFUIX9Av0KTNr0 --server=https://c106-e.us-south.containers.cloud.ibm.com:32725
 
 #update node properties
 kubectl exec -it agent-78ffd9bb85-cdmf6 -- curl -X POST -H "Content-Type: application/json" -d '{"properties": [ {"name": "state", "value": "oklahoma" } ]}' http://localhost:8510/node/policy
@@ -61,3 +62,4 @@ sleep 10
 hzn exchange deployment addpolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
 # hzn exchange deployment updatepolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
 
+oc logout
