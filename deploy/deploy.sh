@@ -25,9 +25,9 @@ cd config/manager && kustomize edit set image controller="$OPERATOR_IMAGE" && cd
 sed -i -e "s|{{APP_IMAGE_BASE}}|$APP_IMAGE_BASE|" config/samples/demo.yaml
 sed -i -e "s|{{IMAGE_VERSION}}|$IMAGE_VERSION|" config/samples/demo.yaml
 
-
+oc login --token=sha256~angtJE895zlm9amB5C3ycjNItkU9k5HPpXps9Lp5Tic --server=https://c115-e.us-south.containers.cloud.ibm.com:30184
 #update node properties
-kubectl exec -it agent-78ffd9bb85-cdmf6 -- curl -X POST -H "Content-Type: application/json" -d '{"properties": [ {"name": "state", "value": "oklahoma" } ]}' http://localhost:8510/node/policy
+kubectl exec -it agent-7bb85d4787-v6msr -- curl -X POST -H "Content-Type: application/json" -d '{"properties": [ {"name": "state", "value": "arizona" } ]}' http://localhost:8510/node/policy
 
 # Update Version in horizon/hzn.json if you make ANY change
 mv horizon/hzn.json /tmp/hzn.json
