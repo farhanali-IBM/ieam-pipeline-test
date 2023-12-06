@@ -12,10 +12,24 @@ OPERATOR_BRANCH="cluster2"
 POLICY_CONSTRAINTS="state == $OPERATOR_BRANCH"
 HZN_POLICY_NAME="ieam-org/policy-nginx-operator"
 
+echo "print all variables to screen....." 
+echo "Image version = $IMAGE_VERSION"
+echo "Horizon Deployment Policy Name = $HZN_POLICY_NAME"
+echo "Branch = $OPERATOR_BRANCH"
+
+
+
 cd $DEPLOY_DIR && git stash && git pull origin $OPERATOR_BRANCH
+#cd $DEPLOY_DIR && git stash && git pull origin $OPERATOR_BRANCH
 cd config/manager && kustomize edit set image controller="$OPERATOR_IMAGE" && cd ../..
 sed -i -e "s|{{APP_IMAGE_BASE}}|$APP_IMAGE_BASE|" config/samples/demo.yaml
 sed -i -e "s|{{IMAGE_VERSION}}|$IMAGE_VERSION|" config/samples/demo.yaml
+
+
+
+oc login --token=sha256~B-JZC1Wan6H-6GwcIDltOudOizj2U8-f0Mecw9ErZUc --server=https://c111-e.us-east.containers.cloud.ibm.com:30848
+#update node properties
+kubectl exec -it agent-85fb79b9cb-sxrqg -- curl -X POST -H "Content-Type: application/json" -d '{"properties": [ {"name": "state", "value": "cluster2" } ]}' http://localhost:8510/node/policy
 
 # Update Version in horizon/hzn.json if you make ANY change
 mv horizon/hzn.json /tmp/hzn.json
@@ -26,7 +40,7 @@ mv ./horizon/service.policy.json /tmp/service.policy.json
 jq --arg Policy_constraints "$POLICY_CONSTRAINTS" '.constraints[0] |= $Policy_constraints' /tmp/service.policy.json > horizon/service.policy.json
 
 #add image version variable to env.sh and update deploy.yaml template
-echo "CLIENT ENGINEERING DEBUG NOTES: export IMAGE_VERSION=$IMAGE_VERSION\n" >> ~/env.sh
+echo "export IMAGE_VERSION=$IMAGE_VERSION\n" >> ~/env.sh
 echo "running make source..."
 make source
 
@@ -50,3 +64,5 @@ sleep 10
 hzn exchange deployment addpolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
 # hzn exchange deployment updatepolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
 
+git add --all && git commit -m "updating repo" && git push -u origin $OPERATOR_BRANCH
+oc logout
