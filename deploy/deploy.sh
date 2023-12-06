@@ -10,8 +10,7 @@ OPERATOR_IMAGE_BASE="farhanali89/operator"
 OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
 OPERATOR_BRANCH="cluster2"
 POLICY_CONSTRAINTS="state == $OPERATOR_BRANCH"
-HZN_POLICY_NAME="ieam-org/policy-nginx-operator"
-
+HZN_POLICY_NAME="ieam-org/policy-$OPERATOR_BRANCH-nginx-operator"
 echo "print all variables to screen....." 
 echo "Image version = $IMAGE_VERSION"
 echo "Horizon Deployment Policy Name = $HZN_POLICY_NAME"
